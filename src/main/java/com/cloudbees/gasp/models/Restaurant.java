@@ -1,7 +1,9 @@
 package com.cloudbees.gasp.models;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +36,8 @@ public class Restaurant {
     @Column
     private String website;
 
-    @OneToMany(mappedBy= "restaurant")
+    @OneToMany(mappedBy= "restaurant",cascade = CascadeType.REMOVE)
+    @JsonIgnore
     private Collection<Review> reviews;
 
     public Restaurant() {

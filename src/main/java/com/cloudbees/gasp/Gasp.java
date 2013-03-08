@@ -34,7 +34,7 @@ public class Gasp extends GuiceServletContextListener {
                     bind(ReviewResource.class);
 
                     filter("/*").through(PersistFilter.class);
-                    serveRegex("/.+").with(GuiceContainer.class,POJO_JSON_MAPPING);
+                    serve("/*").with(GuiceContainer.class,POJO_JSON_MAPPING);
                 }
             }
         );
