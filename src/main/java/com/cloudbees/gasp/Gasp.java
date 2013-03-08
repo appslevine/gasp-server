@@ -12,6 +12,7 @@ import com.sun.jersey.guice.JerseyServletModule;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -33,7 +34,7 @@ public class Gasp extends GuiceServletContextListener {
                     bind(ReviewResource.class);
 
                     filter("/*").through(PersistFilter.class);
-                    serve("/*").with(GuiceContainer.class,POJO_JSON_MAPPING);
+                    serveRegex("/.+").with(GuiceContainer.class,POJO_JSON_MAPPING);
                 }
             }
         );
