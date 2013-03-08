@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.Collection;
 
 /**
  * @author Kohsuke Kawaguchi
@@ -31,6 +33,9 @@ public class Restaurant {
     @JsonProperty
     @Column
     private String website;
+
+    @OneToMany(mappedBy= "restaurant")
+    private Collection<Review> reviews;
 
     public int getId() {
         return id;

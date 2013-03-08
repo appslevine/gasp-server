@@ -3,6 +3,7 @@ package com.cloudbees.gasp.models;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 /**
  * @author Kohsuke Kawaguchi
  */
+@Entity
 public class User {
     @JsonProperty
     @Id
