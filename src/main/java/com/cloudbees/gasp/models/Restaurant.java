@@ -30,10 +30,14 @@ public class Restaurant {
      */
     @JsonProperty
     @Column
-    private String url;
+    private String website;
 
     public int getId() {
         return id;
+    }
+
+    public String getUrl() {
+        return "/restaurants/"+id;
     }
 
     public String getName() {
@@ -44,11 +48,11 @@ public class Restaurant {
         this.name = name;
     }
 
-    public String getUrl() {
-        return url;
+    public String getWebsite() {
+        return website;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setWebsite(String website) {
+        this.website = website;
     }
 }

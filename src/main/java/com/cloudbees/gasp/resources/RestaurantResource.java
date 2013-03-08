@@ -15,6 +15,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import java.net.URI;
+import java.util.List;
+
 import static javax.ws.rs.core.MediaType.*;
 
 /**
@@ -39,7 +42,7 @@ public class RestaurantResource {
     @Transactional
     public Restaurant update(@PathParam("id") int id, Restaurant src) {
         Restaurant r = get(id);
-        r.setUrl(src.getUrl());
+        r.setWebsite(src.getWebsite());
         r.setName(src.getName());
         return manager.find(Restaurant.class,id);
     }
@@ -55,7 +58,16 @@ public class RestaurantResource {
     @POST
     @Consumes(APPLICATION_JSON)
     @Transactional
-    public void create(Restaurant r) {
+    public Response create(Restaurant r) {
         manager.persist(r);
+        return Response.created(URI.create(r.getUrl())).build();
+    }
+
+    @GET
+    @Produces(APPLICATION_JSON)
+    public List<Restaurant> list() {
+        return manager.createQuery(
+                String.format("SELECT r FROM %s r", Restaurant.class.getName()),Restaurant.class)
+                .getResultList();
     }
 }
