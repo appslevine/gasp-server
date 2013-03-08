@@ -3,24 +3,19 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
+  <listener>
+    <listener-class>com.cloudbees.gasp.Gasp</listener-class>
+  </listener>
 
-  <servlet>
-    <servlet-name>gasp</servlet-name>
-    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
-    <init-param>
-      <param-name>com.sun.jersey.config.property.packages</param-name>
-      <param-value>com.cloudbees.gasp.resources</param-value>
-    </init-param>
-    <init-param>
-      <!-- this is to enable POJO to JSON data binding -->
-      <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
-      <param-value>true</param-value>
-    </init-param>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>gasp</servlet-name>
+  <filter>
+    <filter-name>guiceFilter</filter-name>
+    <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>guiceFilter</filter-name>
     <url-pattern>/*</url-pattern>
-  </servlet-mapping>
+  </filter-mapping>
 
   <resource-ref>
     <description>Data store</description>
