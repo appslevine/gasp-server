@@ -27,6 +27,10 @@ public class User {
         return id;
     }
 
+    public String getUrl() {
+        return "/users/"+id;
+    }
+
     public String getName() {
         return name;
     }
