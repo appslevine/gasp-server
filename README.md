@@ -21,6 +21,9 @@ This is a small Java RESTful web application for demonstrating the CloudBees pla
 The app is a hypothetical Yelp-like restaurant recommendation application.
 It has users, restaurants, and reviews that users post to restaurants.
 
+It contains enough common building blocks (JAX-RS, Guice, JPA, and Jackson) to make
+it look like a standard Java web application (war that talks to database). It is also
+small enough to serve as an example.
 
 # Endpoints
 ## Restaurants
@@ -165,6 +168,9 @@ Check out this source repository, then run the following command to launch this 
 in http://localhost:8080/:
 
     mvn jetty:run
+
+This will run Gasp with local H2 database in `./work.h2.db`. If you want to wipe out
+the database, stop the server and delete this file.
 
 ## Deploying to CloudBees
 First, create a new database for this app from the web UI. It doesn't matter
