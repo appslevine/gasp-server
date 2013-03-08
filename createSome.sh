@@ -1,5 +1,5 @@
 #!/bin/bash -e
-URL=http://localhost:8080
+[ "$URL" == "" ] && URL=http://localhost:8080
 
 function create {
     curl -s -S -i -H "Content-Type: application/json" "$@" | tee /tmp/$$
