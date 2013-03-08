@@ -37,6 +37,13 @@ public class Restaurant {
     @OneToMany(mappedBy= "restaurant")
     private Collection<Review> reviews;
 
+    public Restaurant() {
+    }
+
+    public Restaurant(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
@@ -59,5 +66,9 @@ public class Restaurant {
 
     public void setWebsite(String website) {
         this.website = website;
+    }
+
+    public Collection<Review> getReviews() {
+        return reviews;
     }
 }

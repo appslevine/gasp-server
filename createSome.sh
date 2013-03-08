@@ -28,9 +28,11 @@ create -d '{"name":"someone"}' $URL/users
 user=$res
 
 echo Creating a review
-create -d '{"star":3, "user":{"id":1}, "restaurant":{"id":1}}' $URL/reviews
+create -d "{\"star\":3, \"user\":\"$user\", \"restaurant\":\"$restaurant\"}" $URL/reviews
 
 show $URL/reviews
+show $restaurant/reviews
+show $user/reviews
 
 #echo "\nDeleting"
 #curl -X DELETE $res

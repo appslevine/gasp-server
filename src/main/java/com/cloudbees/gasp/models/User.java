@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.Collection;
 
 /**
  * @author Kohsuke Kawaguchi
@@ -25,6 +27,16 @@ public class User {
     @Column
     private String name;
 
+    @OneToMany(mappedBy= "restaurant")
+    private Collection<Review> reviews;
+
+    public User() {
+    }
+
+    public User(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
@@ -39,5 +51,9 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Collection<Review> getReviews() {
+        return reviews;
     }
 }
