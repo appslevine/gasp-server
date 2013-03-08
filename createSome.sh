@@ -28,7 +28,7 @@ create -d '{"name":"someone"}' $URL/users
 user=$res
 
 echo Creating a review
-create -d "{\"star\":3, \"user\":\"$user\", \"restaurant\":\"$restaurant\"}" $URL/reviews
+create -d "{\"star\":3, \"comment\":\"This place is great\", \"user\":\"$user\", \"restaurant\":\"$restaurant\"}" $URL/reviews
 
 show $URL/reviews
 show $restaurant/reviews

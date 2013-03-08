@@ -30,6 +30,10 @@ public class Review {
     @JsonProperty
     private int star;
 
+    @Column
+    @JsonProperty
+    private String comment;
+
     @JsonProperty
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -57,6 +61,14 @@ public class Review {
 
     public void setRestaurant(Restaurant review) {
         this.restaurant = review;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public int getStar() {
