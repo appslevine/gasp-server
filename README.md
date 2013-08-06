@@ -33,7 +33,8 @@ Post the following JSON to `/restaurant` to create a new restaurant:
     % curl -i -d @- -H "Content-Type:application/json" http://localhost:8080/restaurants << EOF
     {
       "name":"Sumika",
-      "website":"http://sumikagrill.com/"
+      "website":"http://sumikagrill.com/",
+      "address":"236 Central Plaza Los Altos, CA 94022"
     }
     EOF
 
@@ -49,7 +50,8 @@ The response will indicate the URL of the restaurant resource:
     % curl -i -X PUT -d @- -H "Content-Type:application/json" http://localhost:8080/restaurants/4 << EOF
     {
       "name":"Sumika",
-      "website":"http://new.sumikagrill.com/"
+      "website":"http://new.sumikagrill.com/",
+      "address":"236 Central Plaza Los Altos, CA 94022"
     }
     EOF
 
@@ -62,6 +64,7 @@ The response will contain the update restaurant information:
       "id":4,
       "name":"Sumika",
       "website":"http://new.sumikagrill.com/",
+      "address":"236 Central Plaza Los Altos, CA 94022",
       "reviews":[],
       "url":"/restaurants/4"
     }
@@ -80,6 +83,7 @@ And here is the same response:
       "id":4,
       "name":"Sumika",
       "website":"http://new.sumikagrill.com/",
+      "address":"236 Central Plaza Los Altos, CA 94022",
       "url":"/restaurants/4"
     }
 

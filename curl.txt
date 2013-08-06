@@ -1,0 +1,218 @@
+$ curl -i -X POST -H "Content-Type:application/json" http://gasp.partnerdemo.cloudbees.net/restaurants -d '{"name":"Sumika", "website":"http://www.sumikagrill.com", "address":"236 Central Plaza Los Altos, CA 94022"}'
+HTTP/1.1 201 Created
+Server: nginx/1.4.1
+Date: Tue, 06 Aug 2013 19:11:13 GMT
+Content-Length: 0
+Connection: keep-alive
+Location: http://gasp.partnerdemo.cloudbees.net/restaurants/1
+
+$ curl -i http://gasp.partnerdemo.cloudbees.net/restaurants/1
+HTTP/1.1 200 OK
+Server: nginx/1.4.1
+Date: Tue, 06 Aug 2013 19:22:52 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+
+{"id":1,"name":"Sumika","website":"http://www.sumikagrill.com","address":"236 Central Plaza Los Altos, CA 94022","url":"/restaurants/1"}
+
+$ curl -i http://gasp.partnerdemo.cloudbees.net/restaurants
+HTTP/1.1 200 OK
+Server: nginx/1.4.1
+Date: Tue, 06 Aug 2013 19:11:46 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+
+[{"id":1,"name":"Sumika","website":"http://www.sumikagrill.com","address":"236 Central Plaza Los Altos, CA 94022","url":"/restaurants/1"}]Marks-MacBook-Pro-2:~ markprichard$
+
+$ curl -i -X POST -H "Content-Type:application/json" http://gasp.partnerdemo.cloudbees.net/users -d '{"name":"Mark Prichard"}'
+HTTP/1.1 201 Created
+Server: nginx/1.4.1
+Date: Tue, 06 Aug 2013 19:13:12 GMT
+Content-Length: 0
+Connection: keep-alive
+Location: http://gasp.partnerdemo.cloudbees.net/users/1
+
+$ curl -i http://gasp.partnerdemo.cloudbees.net/users/1
+HTTP/1.1 200 OK
+Server: nginx/1.4.1
+Date: Tue, 06 Aug 2013 19:24:14 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+
+{"id":1,"name":"Mark Prichard","url":"/users/1"}
+
+$ curl -i http://gasp.partnerdemo.cloudbees.net/users
+HTTP/1.1 200 OK
+Server: nginx/1.4.1
+Date: Tue, 06 Aug 2013 19:13:19 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+
+[{"id":1,"name":"Mark Prichard","url":"/users/1"}]
+
+$ curl -i -X POST -H "Content-Type:application/json" http://gasp.partnerdemo.cloudbees.net/reviews -d '{"star":5, "comment":"Best Japanese food in Los Altos!", "user":"http://gasp.partnerdemo.cloudbees.net/users/1", "restaurant":"http://gasp.partnerdemo.cloudbees.net/restaurants/1"}'
+HTTP/1.1 201 Created
+Server: nginx/1.4.1
+Date: Tue, 06 Aug 2013 19:15:45 GMT
+Content-Length: 0
+Connection: keep-alive
+Location: http://gasp.partnerdemo.cloudbees.net/reviews/1
+
+$ curl -i http://gasp.partnerdemo.cloudbees.net/reviews/1
+HTTP/1.1 200 OK
+Server: nginx/1.4.1
+Date: Tue, 06 Aug 2013 19:25:38 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+
+{"star":5,"comment":"Best Japanese food in Los Altos!","id":1,"url":"/reviews/1","restaurant":"/restaurants/1","user":"/users/1"}
+
+$ curl -i http://gasp.partnerdemo.cloudbees.net/reviews
+HTTP/1.1 200 OK
+Server: nginx/1.4.1
+Date: Tue, 06 Aug 2013 19:15:51 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+
+[{"star":5,"comment":"Best Japanese food in Los Altos!","id":1,"url":"/reviews/1","restaurant":"/restaurants/1","user":"/users/1"}]Marks-MacBook-Pro-2:~ markprichard$
+
+$ curl -i http://gasp.partnerdemo.cloudbees.net/restaurants/1/reviews
+HTTP/1.1 200 OK
+Server: nginx/1.4.1
+Date: Tue, 06 Aug 2013 19:28:59 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+
+[{"star":5,"comment":"Best Japanese food in Los Altos!","id":1,"url":"/reviews/1","restaurant":"/restaurants/1","user":"/users/1"}]
+
+
+$ ./createSome.sh
+HTTP/1.1 201 Created
+Server: nginx/1.4.1
+Date: Tue, 06 Aug 2013 19:32:58 GMT
+Content-Length: 0
+Connection: keep-alive
+Location: http://gasp.partnerdemo.cloudbees.net/restaurants/2
+
+Created http://gasp.partnerdemo.cloudbees.net/restaurants/2
+{
+   "website" : "http://www.yahoo.com",
+   "url" : "/restaurants/2",
+   "name" : "bar",
+   "address" : "236 Central Plaza Los Altos, CA 94022",
+   "id" : 2
+}
+
+[
+   {
+      "website" : "http://www.sumikagrill.com",
+      "url" : "/restaurants/1",
+      "name" : "Sumika",
+      "address" : "236 Central Plaza Los Altos, CA 94022",
+      "id" : 1
+   },
+   {
+      "website" : "http://www.yahoo.com",
+      "url" : "/restaurants/2",
+      "name" : "bar",
+      "address" : "236 Central Plaza Los Altos, CA 94022",
+      "id" : 2
+   }
+]
+
+Updating
+{"id":2,"name":"pub","website":"http://www.sumikagrill.com","address":"236 Central Plaza Los Altos, CA 94022","url":"/restaurants/2"}{
+   "website" : "http://www.sumikagrill.com",
+   "url" : "/restaurants/2",
+   "name" : "pub",
+   "address" : "236 Central Plaza Los Altos, CA 94022",
+   "id" : 2
+}
+
+Creating user
+HTTP/1.1 201 Created
+Server: nginx/1.4.1
+Date: Tue, 06 Aug 2013 19:33:00 GMT
+Content-Length: 0
+Connection: keep-alive
+Location: http://gasp.partnerdemo.cloudbees.net/users/2
+
+Created http://gasp.partnerdemo.cloudbees.net/users/2
+{
+   "url" : "/users/2",
+   "name" : "someone",
+   "id" : 2
+}
+
+Creating a review from http://gasp.partnerdemo.cloudbees.net/users/2 to http://gasp.partnerdemo.cloudbees.net/restaurants/2
+HTTP/1.1 201 Created
+Server: nginx/1.4.1
+Date: Tue, 06 Aug 2013 19:33:00 GMT
+Content-Length: 0
+Connection: keep-alive
+Location: http://gasp.partnerdemo.cloudbees.net/reviews/2
+
+Created http://gasp.partnerdemo.cloudbees.net/reviews/2
+{
+   "comment" : "This place is great",
+   "star" : 3,
+   "user" : "/users/2",
+   "restaurant" : "/restaurants/2",
+   "url" : "/reviews/2",
+   "id" : 2
+}
+
+[
+   {
+      "comment" : "Best Japanese food in Los Altos!",
+      "star" : 5,
+      "user" : "/users/1",
+      "restaurant" : "/restaurants/1",
+      "url" : "/reviews/1",
+      "id" : 1
+   },
+   {
+      "comment" : "This place is great",
+      "star" : 3,
+      "user" : "/users/2",
+      "restaurant" : "/restaurants/2",
+      "url" : "/reviews/2",
+      "id" : 2
+   }
+]
+
+[
+   {
+      "comment" : "This place is great",
+      "star" : 3,
+      "user" : "/users/2",
+      "restaurant" : "/restaurants/2",
+      "url" : "/reviews/2",
+      "id" : 2
+   }
+]
+
+[
+   {
+      "comment" : "This place is great",
+      "star" : 3,
+      "user" : "/users/2",
+      "restaurant" : "/restaurants/2",
+      "url" : "/reviews/2",
+      "id" : 2
+   }
+]

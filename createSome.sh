@@ -13,13 +13,13 @@ function show {
     echo
 }
 
-create -d '{"name":"bar","website":"http://www.yahoo.com"}' $URL/restaurants
+create -d '{"name":"bar","website":"http://www.yahoo.com","address":"236 Central Plaza Los Altos, CA 94022"}' $URL/restaurants
 restaurant=$res
 
 show $URL/restaurants
 
 echo "Updating"
-curl -X PUT -d '{"name":"pub","website":"http://www.yahoo.com"}' -H "Content-Type: application/json" $restaurant
+curl -X PUT -d '{"name":"pub","website":"http://www.sumikagrill.com","address":"236 Central Plaza Los Altos, CA 94022"}' -H "Content-Type: application/json" $restaurant
 show $restaurant
 
 
