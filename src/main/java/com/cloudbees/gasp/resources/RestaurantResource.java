@@ -36,6 +36,7 @@ public class RestaurantResource extends ResourceCollection<Restaurant> {
         Restaurant r = get(id);
         r.setWebsite(src.getWebsite());
         r.setName(src.getName());
+        r.setAddress(src.getAddress());
         return manager.find(Restaurant.class,id);
     }
 

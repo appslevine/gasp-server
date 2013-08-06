@@ -36,6 +36,13 @@ public class Restaurant {
     @Column
     private String website;
 
+    /**
+     * Address of the restaurant.
+     */
+    @JsonProperty
+    @Column
+    private String address;
+
     @OneToMany(mappedBy= "restaurant",cascade = CascadeType.REMOVE)
     @JsonIgnore
     private Collection<Review> reviews;
@@ -69,6 +76,14 @@ public class Restaurant {
 
     public void setWebsite(String website) {
         this.website = website;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Collection<Review> getReviews() {
