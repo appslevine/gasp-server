@@ -29,7 +29,7 @@ public class User {
     @Column
     private String name;
 
-    @OneToMany(mappedBy= "restaurant",cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy="user",cascade = CascadeType.REMOVE)
     @JsonIgnore
     private Collection<Review> reviews;
 
