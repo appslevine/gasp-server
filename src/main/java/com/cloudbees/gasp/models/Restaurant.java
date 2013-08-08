@@ -43,7 +43,7 @@ public class Restaurant {
     @Column
     private String address;
 
-    @OneToMany(mappedBy= "restaurant",cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy= "restaurant",cascade = CascadeType.REMOVE,orphanRemoval = true)
     @JsonIgnore
     private Collection<Review> reviews;
 
