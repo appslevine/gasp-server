@@ -17,6 +17,12 @@
 
 Great local restaurant search that takes your breath away!
 
+> <img src="http://www.cloudbees.com/sites/all/themes/custom/cloudbees_zen/css/bidesign/_ui/images/logo.png"/>
+>
+> <b>Note</b>: <i>This repo is part of the Gasp demo project - a showcase of <a href="https://developer.cloudbees.com/bin/view/Mobile">cloudbees mobile services</a>.
+> You can see the big picture of the <a href="http://mobilepaas.cloudbees.com">showcase here</a>.
+> Feel free to fork and use this repo as a template.</i>
+
 This is a small Java RESTful web application for demonstrating the CloudBees platform.
 The app is a hypothetical Yelp-like restaurant recommendation application.
 It has users, restaurants, and reviews that users post to restaurants.
