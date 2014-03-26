@@ -19,13 +19,7 @@ package com.cloudbees.gasp.models;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Collection;
 
 /**
@@ -53,11 +47,11 @@ public class Restaurant {
     private String website;
 
     /**
-     * Address of the restaurant.
+     * Google Places API Id for the restaurant.
      */
     @JsonProperty
-    @Column
-    private String address;
+    @Column(unique = true)
+    private String placesId;
 
     @OneToMany(mappedBy= "restaurant",cascade = CascadeType.REMOVE,orphanRemoval = true)
     @JsonIgnore
@@ -94,12 +88,12 @@ public class Restaurant {
         this.website = website;
     }
 
-    public String getAddress() {
-        return address;
+    public String getPlacesId() {
+        return placesId;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPlacesId(String address) {
+        this.placesId = address;
     }
 
     public Collection<Review> getReviews() {
