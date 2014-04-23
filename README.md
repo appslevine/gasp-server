@@ -1,35 +1,47 @@
-        GGGGGGGGGGGGG               AAA                 SSSSSSSSSSSSSSS PPPPPPPPPPPPPPPPP    !!!
-     GGG::::::::::::G              A:::A              SS:::::::::::::::SP::::::::::::::::P  !!:!!
-    GG:::::::::::::::G             A:::::A            S:::::SSSSSS::::::SP::::::PPPPPP:::::P !:::!
-    G:::::GGGGGGGG::::G            A:::::::A           S:::::S     SSSSSSSPP:::::P     P:::::P!:::!
-    G:::::G       GGGGGG           A:::::::::A          S:::::S              P::::P     P:::::P!:::!
-    G:::::G                        A:::::A:::::A         S:::::S              P::::P     P:::::P!:::!
-    G:::::G                       A:::::A A:::::A         S::::SSSS           P::::PPPPPP:::::P !:::!
-    G:::::G    GGGGGGGGGG        A:::::A   A:::::A         SS::::::SSSSS      P:::::::::::::PP  !:::!
-    G:::::G    G::::::::G       A:::::A     A:::::A          SSS::::::::SS    P::::PPPPPPPPP    !:::!
-    G:::::G    GGGGG::::G      A:::::AAAAAAAAA:::::A            SSSSSS::::S   P::::P            !:::!
-    G:::::G        G::::G     A:::::::::::::::::::::A                S:::::S  P::::P            !!:!!
-    G:::::G       G::::G    A:::::AAAAAAAAAAAAA:::::A               S:::::S  P::::P             !!!
-    G:::::GGGGGGGG::::G   A:::::A             A:::::A  SSSSSSS     S:::::SPP::::::PP
-    GG:::::::::::::::G  A:::::A               A:::::A S::::::SSSSSS:::::SP::::::::P           !!!
-     GGG::::::GGG:::G A:::::A                 A:::::AS:::::::::::::::SS P::::::::P          !!:!!
-        GGGGGG   GGGGAAAAAAA                   AAAAAAASSSSSSSSSSSSSSS   PPPPPPPPPP           !!!
-
-Great local restaurant search that takes your breath away!
-
-> <img src="http://www.cloudbees.com/sites/all/themes/custom/cloudbees_zen/css/bidesign/_ui/images/logo.png"/>
->
-> <b>Note</b>: <i>This repo is part of the Gasp demo project - a showcase of <a href="https://developer.cloudbees.com/bin/view/Mobile">cloudbees mobile services</a>.
-> You can see the big picture of the <a href="http://mobilepaas.cloudbees.com">showcase here</a>.
-> Feel free to fork and use this repo as a template.</i>
-
-This is a small Java RESTful web application for demonstrating the CloudBees platform.
-The app is a hypothetical Yelp-like restaurant recommendation application.
-It has users, restaurants, and reviews that users post to restaurants.
+This is a small Java RESTful web application that serves as a back-end for the Gasp! demo, originally
+written by Kohsuke Kawaguchi of CloudBees. The app is a hypothetical Yelp-like restaurant recommendation
+application. It has users, restaurants, and reviews that users post to restaurants.
 
 It contains enough common building blocks (JAX-RS, Guice, JPA, and Jackson) to make
 it look like a standard Java web application (war that talks to database). It is also
 small enough to serve as an example.
+
+The database schema should be self-evident, except for the *placesId* column for restaurant: this refers to
+the [Google Places API](https://developers.google.com/places/documentation/#Introduction) id value for the location.
+This id can stored in a third-party database and used to retrieve geolocation data from the Google Maps API,
+as per the terms of the Google Maps license, so that the restaurant location can be displayed on Google Maps.
+For an example showing how to retrieve the Google Places id for a location, please see one of the Gasp! clients,
+e.g. [gasp-android](https://github.com/mqprichard/gasp-android).
+
+    mysql> show columns from restaurant;
+    +----------+--------------+------+-----+---------+----------------+
+    | Field    | Type         | Null | Key | Default | Extra          |
+    +----------+--------------+------+-----+---------+----------------+
+    | id       | int(11)      | NO   | PRI | NULL    | auto_increment |
+    | name     | varchar(255) | YES  |     | NULL    |                |
+    | placesId | varchar(255) | YES  |     | NULL    |                |
+    | website  | varchar(255) | YES  |     | NULL    |                |
+    +----------+--------------+------+-----+---------+----------------+
+
+    mysql> show columns from review;
+    +---------------+--------------+------+-----+---------+----------------+
+    | Field         | Type         | Null | Key | Default | Extra          |
+    +---------------+--------------+------+-----+---------+----------------+
+    | id            | int(11)      | NO   | PRI | NULL    | auto_increment |
+    | comment       | varchar(255) | YES  |     | NULL    |                |
+    | star          | int(11)      | YES  |     | NULL    |                |
+    | restaurant_id | int(11)      | NO   | MUL | NULL    |                |
+    | user_id       | int(11)      | NO   | MUL | NULL    |                |
+    +---------------+--------------+------+-----+---------+----------------+
+
+    mysql> show columns from user;
+    +-------+--------------+------+-----+---------+----------------+
+    | Field | Type         | Null | Key | Default | Extra          |
+    +-------+--------------+------+-----+---------+----------------+
+    | id    | int(11)      | NO   | PRI | NULL    | auto_increment |
+    | name  | varchar(255) | YES  |     | NULL    |                |
+    +-------+--------------+------+-----+---------+----------------+
+
 
 # Endpoints
 ## Restaurants
@@ -40,7 +52,7 @@ Post the following JSON to `/restaurant` to create a new restaurant:
     {
       "name":"Sumika",
       "website":"http://sumikagrill.com/",
-      "address":"236 Central Plaza Los Altos, CA 94022"
+      "placesId":"218713866ea945402b0967d3192fa537cde42f36"
     }
     EOF
 
@@ -57,7 +69,7 @@ The response will indicate the URL of the restaurant resource:
     {
       "name":"Sumika",
       "website":"http://new.sumikagrill.com/",
-      "address":"236 Central Plaza Los Altos, CA 94022"
+      "placesId":"218713866ea945402b0967d3192fa537cde42f36"
     }
     EOF
 
@@ -70,7 +82,7 @@ The response will contain the update restaurant information:
       "id":4,
       "name":"Sumika",
       "website":"http://new.sumikagrill.com/",
-      "address":"236 Central Plaza Los Altos, CA 94022",
+      "placesId":"218713866ea945402b0967d3192fa537cde42f36",
       "reviews":[],
       "url":"/restaurants/4"
     }
@@ -89,7 +101,7 @@ And here is the same response:
       "id":4,
       "name":"Sumika",
       "website":"http://new.sumikagrill.com/",
-      "address":"236 Central Plaza Los Altos, CA 94022",
+      "placesId":"218713866ea945402b0967d3192fa537cde42f36",
       "url":"/restaurants/4"
     }
 
