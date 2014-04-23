@@ -1,3 +1,5 @@
+# Introduction
+
 This is a small Java RESTful web application that serves as a back-end for the Gasp! demo, originally
 written by Kohsuke Kawaguchi of CloudBees. The app is a hypothetical Yelp-like restaurant recommendation
 application. It has users, restaurants, and reviews that users post to restaurants.
@@ -5,6 +7,8 @@ application. It has users, restaurants, and reviews that users post to restauran
 It contains enough common building blocks (JAX-RS, Guice, JPA, and Jackson) to make
 it look like a standard Java web application (war that talks to database). It is also
 small enough to serve as an example.
+
+# Schema
 
 The database schema should be self-evident, except for the *placesId* column for restaurant: this refers to
 the [Google Places API](https://developers.google.com/places/documentation/#Introduction) id value for the location.
