@@ -39,7 +39,7 @@ public class User {
     private int id;
 
     /**
-     * Human readable name of the restaurant.
+     * Human readable name of the tavern.
      */
     @JsonProperty
     @Column

@@ -16,7 +16,7 @@
 
 package com.cloudbees.gasp.resources;
 
-import com.cloudbees.gasp.models.Restaurant;
+import com.cloudbees.gasp.models.Tavern;
 import com.cloudbees.gasp.models.Review;
 import com.cloudbees.gasp.models.User;
 import com.google.inject.persist.Transactional;
@@ -42,9 +42,9 @@ public class ReviewResource extends ResourceCollection<Review> {
     @Consumes(APPLICATION_JSON)
     @Transactional
     public Response create(Review r) {
-        // the deserialized review object contains a bogus Restaurant and User, which needs to be fixed
+        // the deserialized review object contains a bogus Tavern and User, which needs to be fixed
         r.setUser(manager.find(User.class,r.getUser().getId()));
-        r.setRestaurant(manager.find(Restaurant.class,r.getRestaurant().getId()));
+        r.setTavern(manager.find(Tavern.class,r.getTavern().getId()));
 
         manager.persist(r);
         return Response.created(URI.create(r.getId()+"")).build();

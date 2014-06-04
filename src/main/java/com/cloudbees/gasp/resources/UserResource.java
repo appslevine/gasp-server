@@ -16,7 +16,7 @@
 
 package com.cloudbees.gasp.resources;
 
-import com.cloudbees.gasp.models.Restaurant;
+import com.cloudbees.gasp.models.Tavern;
 import com.cloudbees.gasp.models.Review;
 import com.cloudbees.gasp.models.User;
 import com.google.inject.persist.Transactional;
@@ -48,7 +48,7 @@ public class UserResource extends ResourceCollection<User> {
     @Produces(APPLICATION_JSON)
     @Path("{id}")
     @Transactional
-    public User update(@PathParam("id") int id, Restaurant src) {
+    public User update(@PathParam("id") int id, Tavern src) {
         User r = get(id);
         r.setName(src.getName());
         return manager.find(User.class,id);

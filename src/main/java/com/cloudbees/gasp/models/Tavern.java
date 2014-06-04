@@ -26,41 +26,41 @@ import java.util.Collection;
  * @author Kohsuke Kawaguchi
  */
 @Entity
-public class Restaurant {
+public class Tavern {
     @JsonProperty
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
     /**
-     * Human readable name of the restaurant.
+     * Human readable name of the tavern.
      */
     @JsonProperty
     @Column
     private String name;
 
     /**
-     * URL of the restaurant website.
+     * URL of the tavern website.
      */
     @JsonProperty
     @Column
     private String website;
 
     /**
-     * Google Places API Id for the restaurant.
+     * Google Places API Id for the tavern.
      */
     @JsonProperty
     @Column(unique = true)
     private String placesId;
 
-    @OneToMany(mappedBy= "restaurant",cascade = CascadeType.REMOVE,orphanRemoval = true)
+    @OneToMany(mappedBy= "tavern",cascade = CascadeType.REMOVE,orphanRemoval = true)
     @JsonIgnore
     private Collection<Review> reviews;
 
-    public Restaurant() {
+    public Tavern() {
     }
 
-    public Restaurant(int id) {
+    public Tavern(int id) {
         this.id = id;
     }
 
@@ -69,7 +69,7 @@ public class Restaurant {
     }
 
     public String getUrl() {
-        return "/restaurants/"+id;
+        return "/taverns/"+id;
     }
 
     public String getName() {

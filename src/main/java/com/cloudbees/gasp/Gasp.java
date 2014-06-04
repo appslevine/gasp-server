@@ -1,6 +1,6 @@
 package com.cloudbees.gasp;
 
-import com.cloudbees.gasp.resources.RestaurantResource;
+import com.cloudbees.gasp.resources.TavernResource;
 import com.cloudbees.gasp.resources.ReviewResource;
 import com.cloudbees.gasp.resources.UserResource;
 import com.google.inject.Guice;
@@ -28,7 +28,7 @@ public class Gasp extends GuiceServletContextListener {
             new JerseyServletModule() {
                 @Override
                 protected void configureServlets() {
-                    bind(RestaurantResource.class);
+                    bind(TavernResource.class);
                     bind(UserResource.class);
                     bind(ReviewResource.class);
 

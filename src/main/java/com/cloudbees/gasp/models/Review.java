@@ -34,7 +34,7 @@ public class Review {
     @ManyToOne(optional=false)
     @JoinColumn
     @JsonIgnore // serialized as reference
-    private Restaurant restaurant;
+    private Tavern tavern;
 
     @Column
     @JsonProperty
@@ -65,12 +65,12 @@ public class Review {
         this.user = user;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public Tavern getTavern() {
+        return tavern;
     }
 
-    public void setRestaurant(Restaurant review) {
-        this.restaurant = review;
+    public void setTavern(Tavern review) {
+        this.tavern = review;
     }
 
     public String getComment() {
@@ -91,13 +91,13 @@ public class Review {
 
 // On JSON, serialize as reference
 
-    @JsonProperty("restaurant")
-    public String getRestaurantUrl() {
-        return restaurant.getUrl();
+    @JsonProperty("tavern")
+    public String getTavernUrl() {
+        return tavern.getUrl();
     }
 
-    public void setRestaurantUrl(String url) {
-        restaurant = new Restaurant(toId(url));
+    public void setTavernUrl(String url) {
+        tavern = new Tavern(toId(url));
     }
 
     @JsonProperty("user")
