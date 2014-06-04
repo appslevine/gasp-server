@@ -1,5 +1,6 @@
 package com.cloudbees.gasp;
 
+import com.cloudbees.gasp.resources.EventResource;
 import com.cloudbees.gasp.resources.TavernResource;
 import com.cloudbees.gasp.resources.ReviewResource;
 import com.cloudbees.gasp.resources.UserResource;
@@ -31,6 +32,7 @@ public class Gasp extends GuiceServletContextListener {
                     bind(TavernResource.class);
                     bind(UserResource.class);
                     bind(ReviewResource.class);
+                    bind(EventResource.class);
 
                     filter("/*").through(PersistFilter.class);
                     serve("/*").with(GuiceContainer.class,POJO_JSON_MAPPING);
