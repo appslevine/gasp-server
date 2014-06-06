@@ -1,0 +1,15 @@
+
+// Mark's first link
+https://maps.googleapis.com/maps/api/place/nearbysearch/json?sensor=false&key=<AIzaSyDKJvrb9xQjnbBhbyZEpzhLDkVtYR9AOTQ>&location=37.78609243567646,-122.39667884119696&radius=500&types=Restaurant|food|cafe
+
+// Mark's second link
+https://maps.googleapis.com/maps/api/place/details/json?sensor=false&key=<your-key>&reference=CrQBrgAAAAJr4Ulu4LtQKvQRM5lLkK52BQk0K_NpMbB-aEgDFX1aYnO_9DquYrc5LJJ9YaOWXAKx0qagelTw7UPjtUJOe0-0wxfGCci8IyY0mxlAcDA9NjwGGQswaQegWzcu-9N-DYzmnxyXzZ0jM2a9fY3Cwt6aXPQMLPU7972zNBI2s33nJmyl60gRW1iQY1AG8sg2amXOVowmfBS_81tFU3fVgsicqLBxZbXCOuTMElUV8ZQPEhAMOYfzXvJb1Sx8cIt6wfH1GhT5k7-G9NOB0TBTPq3XIiw_8eMR2w
+
+// My places api key
+AIzaSyDKJvrb9xQjnbBhbyZEpzhLDkVtYR9AOTQ
+
+// the example from google places api
+
+https://maps.googleapis.com/maps/api/place/details/json?reference=CmRYAAAAciqGsTRX1mXRvuXSH2ErwW-jCINE1aLiwP64MCWDN5vkXvXoQGPKldMfmdGyqWSpm7BEYCgDm-iv7Kc2PF7QA7brMAwBbAcqMr5i1f4PwTpaovIZjysCEZTry8Ez30wpEhCNCXpynextCld2EBsDkRKsGhSLayuRyFsex6JA6NPh9dyupoTH3g&sensor=true&key=AIzaSyDKJvrb9xQjnbBhbyZEpzhLDkVtYR9AOTQ
+
+https://maps.googleapis.com/maps/api/place/nearbysearch/json?sensor=false&key=AIzaSyDKJvrb9xQjnbBhbyZEpzhLDkVtYR9AOTQ&location=37.78609243567646,-122.39667884119696&radius=1000&types=Bar%7Cfood%7Ccafe

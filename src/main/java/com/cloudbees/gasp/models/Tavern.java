@@ -53,9 +53,17 @@ public class Tavern {
     @Column(unique = true)
     private String placesId;
 
+    /*
+      event  = none, wine,beer,spirits,happyhour
+     */
+    @JsonProperty
+    @Column
+    private String event;
+
     @OneToMany(mappedBy= "tavern",cascade = CascadeType.REMOVE,orphanRemoval = true)
     @JsonIgnore
     private Collection<Review> reviews;
+
 
     public Tavern() {
     }
@@ -98,5 +106,12 @@ public class Tavern {
 
     public Collection<Review> getReviews() {
         return reviews;
+    }
+
+    public String getEvent() {
+        return event;
+    }
+    public void setEvent(String event) {
+        this.event = event;
     }
 }

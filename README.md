@@ -17,7 +17,7 @@ as per the terms of the Google Maps license, so that the restaurant location can
 For an example showing how to retrieve the Google Places id for a location, please see one of the Gasp! clients,
 e.g. [gasp-android](https://github.com/mqprichard/gasp-android).
 
-    mysql> show columns from restaurant;
+    mysql> show columns from tavern;
     +----------+--------------+------+-----+---------+----------------+
     | Field    | Type         | Null | Key | Default | Extra          |
     +----------+--------------+------+-----+---------+----------------+
@@ -25,6 +25,7 @@ e.g. [gasp-android](https://github.com/mqprichard/gasp-android).
     | name     | varchar(255) | YES  |     | NULL    |                |
     | placesId | varchar(255) | YES  |     | NULL    |                |
     | website  | varchar(255) | YES  |     | NULL    |                |
+    | event    | int(11)      | NO   |     |         |                |
     +----------+--------------+------+-----+---------+----------------+
 
     mysql> show columns from review;
@@ -45,6 +46,8 @@ e.g. [gasp-android](https://github.com/mqprichard/gasp-android).
     | id    | int(11)      | NO   | PRI | NULL    | auto_increment |
     | name  | varchar(255) | YES  |     | NULL    |                |
     +-------+--------------+------+-----+---------+----------------+
+    
+    
 
 
 # Endpoints
