@@ -53,8 +53,8 @@ public class Tavern {
     @Column(unique = true)
     private String placesId;
 
-    /*
-      event  = none, wine,beer,spirits,happyhour
+    /**
+      Added new field  'event'  = none, wine,beer,spirits,happyhour
      */
     @JsonProperty
     @Column
@@ -108,10 +108,12 @@ public class Tavern {
         return reviews;
     }
 
-    public String getEvent() {
-        return event;
-    }
     public void setEvent(String event) {
         this.event = event;
     }
+
+    public String getEvent() {
+        return event;
+    }
+
 }
